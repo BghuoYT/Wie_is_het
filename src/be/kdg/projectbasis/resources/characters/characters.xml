@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    <character name="Anna" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires="bril"/>
-    <character name="Bob" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel= "geen" accessoires="halsketting"/>
-    <character name="Cathy" geslacht="vrouw" oogkleur="groen" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="golvend" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen"/>
-    <character name="Dave" geslacht="man" oogkleur="grijs" haarkleur="rood" haarlengte="kort" haarstijl="krullen" gezichtsbeharing="snor" hoofddeksel="muts" accessoires= "geen"/>
-    <character name="Emma" geslacht="vrouw" oogkleur="bruin" haarkleur="zwart" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires="bril"/>
-    <character name="Frank" geslacht="man" oogkleur="blauw" haarkleur="kaal" haarlengte="kaal" haarstijl="kaal" gezichtsbeharing="baard" hoofddeksel="pet" accessoires="halsketting"/>
-    <character name="Gina" geslacht="vrouw" oogkleur="grijs" haarkleur="blond" haarlengte="schouderlengte" haarstijl="golvend" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen"/>
-    <character name="Henry" geslacht="man" oogkleur="groen" haarkleur="rood" haarlengte="schouderlengte" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel="muts" accessoires= "geen"/>
-    <character name="Isabel" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="kort" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="halsketting"/>
-    <character name="John" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="golvend" gezichtsbeharing="snor" hoofddeksel= "geen" accessoires= "geen"/>
-    <character name="Alice" geslacht="vrouw" oogkleur="bruin" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires="bril"/>
-    <character name="Jana" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="muts" accessoires= "geen"/>
-    <character name="Tom" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel="pet" accessoires= "geen"/>
-    <character name="Lore" geslacht="vrouw" oogkleur="groen" haarkleur="rood" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen"/>
-    <character name="Bram" geslacht="man" oogkleur="grijs" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen"/>
-    <character name="Lotte" geslacht="vrouw" oogkleur="bruin" haarkleur="bruin" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen"/>
-    <character name="Maarten" geslacht="man" oogkleur="blauw" haarkleur="blond" haarlengte="kort" haarstijl="golvend" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen"/>
-    <character name="Fien" geslacht="vrouw" oogkleur="grijs" haarkleur="zwart" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen"/>
-    <character name="Jan" geslacht="man" oogkleur="blauw" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen"/>
-    <character name="Amalia" geslacht="vrouw" oogkleur="groen" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen"/>
-    <character name="Wout" geslacht="man" oogkleur="bruin" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing="snor" hoofddeksel="pet" accessoires= "geen"/>
+    <character name="Anna" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing="geen" hoofddeksel="hoed" accessoires="bril" afbeelding="Anna.jpg"/>
+    <character name="Bob" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel="geen" accessoires="halsketting" afbeelding="Bob.jpg"/>
+    <character name="Cathy" geslacht="vrouw" oogkleur="groen" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="golvend" gezichtsbeharing="geen" hoofddeksel="geen" accessoires="oorbellen" afbeelding="Cathy.jpg"/>
+    <character name="Dave" geslacht="man" oogkleur="grijs" haarkleur="rood" haarlengte="kort" haarstijl="krullen" gezichtsbeharing="snor" hoofddeksel="muts" accessoires="geen" afbeelding="Dave.jpg"/>
+    <character name="Emma" geslacht="vrouw" oogkleur="bruin" haarkleur="zwart" haarlengte="lang" haarstijl="stijl" gezichtsbeharing="geen" hoofddeksel="hoed" accessoires="bril" afbeelding="Emma.jpg"/>
+    <character name="Frank" geslacht="man" oogkleur="blauw" haarkleur="kaal" haarlengte="kaal" haarstijl="kaal" gezichtsbeharing="baard" hoofddeksel="pet" accessoires="halsketting" afbeelding="Frank.jpg"/>
+    <character name="Gina" geslacht="vrouw" oogkleur="grijs" haarkleur="blond" haarlengte="schouderlengte" haarstijl="golvend" gezichtsbeharing="geen" hoofddeksel="geen" accessoires="oorbellen" afbeelding="Gina.jpg"/>
+    <character name="Henry" geslacht="man" oogkleur="groen" haarkleur="rood" haarlengte="schouderlengte" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel="muts" accessoires="geen" afbeelding="Henry.jpg"/>
+    <character name="Isabel" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="kort" haarstijl="krullen" gezichtsbeharing="geen" hoofddeksel="geen" accessoires="halsketting" afbeelding="Isabel.jpg"/>
+    <character name="John" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="golvend" gezichtsbeharing="snor" hoofddeksel= "geen" accessoires= "geen" afbeelding="John.jpg"/>
+    <character name="Alice" geslacht="vrouw" oogkleur="bruin" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires="bril" afbeelding="Alice.jpg"/>
+    <character name="Jana" geslacht="vrouw" oogkleur="blauw" haarkleur="blond" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="muts" accessoires= "geen" afbeelding="Jana.jpg"/>
+    <character name="Tom" geslacht="man" oogkleur="bruin" haarkleur="zwart" haarlengte="kort" haarstijl="stijl" gezichtsbeharing="baard" hoofddeksel="pet" accessoires= "geen" afbeelding="Tom.jpg"/>
+    <character name="Lore" geslacht="vrouw" oogkleur="groen" haarkleur="rood" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Lore.jpg"/>
+    <character name="Bram" geslacht="man" oogkleur="grijs" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Bram.jpg"/>
+    <character name="Lotte" geslacht="vrouw" oogkleur="bruin" haarkleur="bruin" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen" afbeelding="Lotte.jpg"/>
+    <character name="Maarten" geslacht="man" oogkleur="blauw" haarkleur="blond" haarlengte="kort" haarstijl="golvend" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Maarten.jpg"/>
+    <character name="Fien" geslacht="vrouw" oogkleur="grijs" haarkleur="zwart" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Fien.jpg"/>
+    <character name="Jan" geslacht="man" oogkleur="blauw" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen" afbeelding="Jan.jpg"/>
+    <character name="Amalia" geslacht="vrouw" oogkleur="groen" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen" afbeelding="Amalia.jpg"/>
+    <character name="Wout" geslacht="man" oogkleur="bruin" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing="snor" hoofddeksel="pet" accessoires= "geen" afbeelding="Wout.jpg"/>
 </xml>
