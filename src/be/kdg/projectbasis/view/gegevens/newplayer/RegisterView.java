@@ -1,6 +1,6 @@
 package be.kdg.projectbasis.view.gegevens.newplayer;
 
-import be.kdg.projectbasis.view.gegevens.SceneLabel;
+import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -38,13 +38,13 @@ public class RegisterView extends VBox {
 
     private void initialiseNodes() {
       this.btnSubmit = new Button("registreer");
-      this.lblUsername = new SceneLabel("Username: ");
+      this.lblUsername = new StyleLabel("Username: ");
       this.txtUsername = new TextField();
-        this.lblVoorNaam = new SceneLabel("Voornaam: ");
+        this.lblVoorNaam = new StyleLabel("Voornaam: ");
         this.txtVoorNaam = new TextField();
-        this.lblAchterNaam = new SceneLabel("Achternaam: ");
+        this.lblAchterNaam = new StyleLabel("Achternaam: ");
         this.txtAchterNaam = new TextField();
-        this.lblEmail = new SceneLabel("Email: ");
+        this.lblEmail = new StyleLabel("Email: ");
         this.txtEmail = new TextField();
       this.gridpanestyle= new GridPane();
 

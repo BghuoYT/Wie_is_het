@@ -1,48 +1,37 @@
 package be.kdg.projectbasis.view.spelBord;
 
 import be.kdg.projectbasis.model.ProgrammaModel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
+
 
 public class SpelBordPresenter {
-    private SpelBordView view;
     private ProgrammaModel model;
 
-    public SpelBordPresenter(ProgrammaModel model ,SpelBordView view) {
-        this.view = view;
+    private SpelbeurtSpeler spelbeurtSpeler;
+    private SpelBordView view;
+
+    public SpelBordPresenter(ProgrammaModel model, SpelBordView view) {
         this.model = model;
-        this.addEventHandlers();
+        this.view = view;
+        this.spelbeurtSpeler = spelbeurtSpeler;
+        addEventHandlers();
     }
 
     private void addEventHandlers() {
-        view.getSubmitQuestion().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String question = view.getTxtQuestion().getText();
-                if (question.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Vul een vraag in", ButtonType.OK);
-                    alert.showAndWait();
-                } else {
-                    // Hier kun je de vraag versturen naar het spelbordmodel
-                    view.getTxtQuestion().clear();
-                }
-            }
+        view.getBtnVraag().setOnAction(event -> {
+            String question = view.getTxtVraag().getText();
+            model.startSpelbeurtSpeler(question);
+            System.out.println("vraag gesteld");
+            model.startSpelbeurtComputer();
+            System.out.println("het is terug jou beurt");
+            model.refreshCharacters();
+            System.out.println("stel een nieuwe vraag");
         });
-
-        view.getSubmitGuess().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String guess = view.getTxtGuess().getText();
-                if (guess.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Vul een gok in", ButtonType.OK);
-                    alert.showAndWait();
-                } else {
-                    // Hier kun je de gok versturen naar het spelbordmodel
-                    view.getTxtGuess().clear();
-                }
-            }
+        view.getBtnGok().setOnAction(event -> {
+            String gok = view.getTxtGok().getText();
+            model.maakGok(gok);
         });
     }
+
+
 }

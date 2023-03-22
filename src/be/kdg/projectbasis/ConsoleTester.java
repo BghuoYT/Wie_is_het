@@ -32,26 +32,38 @@ public class ConsoleTester {
             HighScoreModel newPlayer = new HighScoreModel(username, voornaam, achternaam, email, 0);
             HighScoreModel.savePlayerInfo(username, voornaam, achternaam, email,0);
         }
+        System.out.println("welcome " + username + "!");
 
         // maak instanties van alle nodige klasses
         SpelbeurtSpeler spelbeurtSpeler = new SpelbeurtSpeler();
         SpelbeurtComputer spelbeurtComputer = new SpelbeurtComputer();
 
         // begin met de setup en laat elke speler een character kiezen
-        spelbeurtComputer.setupComputer();
+        String chosenCharacter = scanner.nextLine();
+        spelbeurtComputer.setupComputer(chosenCharacter);
         spelbeurtSpeler.setupSpeler();
 
         // start spelbeurt speler en wissel om de beurt af met computer totdat iemand wint
         boolean gameOver = false; // nieuwe variabele
         while (!gameOver) { // verander de voorwaarde in een boolean expressie
-            spelbeurtSpeler.startSpelbeurt();
-            if (spelbeurtSpeler.spelerWin) {
+            String vraag = scanner.nextLine();
+            spelbeurtSpeler.startSpelbeurt(vraag);
+            //wil je een gok wagen ja/nee
+            System.out.println("wil je een gok wagen ja/nee");
+            String gokWagen = scanner.nextLine();
+            if (gokWagen == "ja") {
+                String gok = scanner.nextLine();
+              spelbeurtSpeler.makeGuess(gok);
+            } else if (gokWagen == "nee") {
+                break;
+            }
+            if (spelbeurtSpeler.getSpelerWin()) {
                 System.out.println("Gefeliciteerd, je hebt gewonnen!");
                 player.addWin();
                 gameOver = true; // verander de gameOver-status
             } else {
                 spelbeurtComputer.startSpelbeurt();
-                if (spelbeurtComputer.computerWin) {
+                if (spelbeurtComputer.getComputerWin()) {
                     System.out.println("Helaas, de computer heeft gewonnen.");
                     gameOver = true; // verander de gameOver-status
                 }

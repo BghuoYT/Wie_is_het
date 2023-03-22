@@ -11,11 +11,11 @@ import java.util.Scanner;
 public class SpelbeurtComputer {
     private ArrayList<Character> remainingCharactersComputer;
     private Character chosenCharacter;
-
-    public boolean computerWin = false;
+    private String chosenCharacterName;
+    private boolean computerWin = false;
     Scanner scanner = new Scanner(System.in);
     
-    public void setupComputer() {
+    public static void setupComputer(String chosenCharacterName){} {
         // Print alle characters voor de speler
         CharacterlijstComputer CharacterlijstComputer = new CharacterlijstComputer();
         remainingCharactersComputer = new ArrayList<>();
@@ -25,9 +25,6 @@ public class SpelbeurtComputer {
             // Alle characters invoegen
             remainingCharactersComputer.add(character);
         }
-        System.out.println("Kies een character uit de bovenstaande lijst dat de computer moet raden");
-        // Kies een character voor de computer om te raden
-        String chosenCharacterName = scanner.nextLine();
         // haal het gekozen character uit de lijst met resterende characters
         for (Character character : remainingCharactersComputer) {
             if (character.getNaam().equalsIgnoreCase(chosenCharacterName)) {
@@ -36,6 +33,7 @@ public class SpelbeurtComputer {
             }
         }
         System.out.println("keuze genoteerd");
+        System.out.println(chosenCharacter.getNaam());
     }
 
     public void startSpelbeurt() {
@@ -121,5 +119,9 @@ public class SpelbeurtComputer {
 
         // Reset de computerWin-flag
         computerWin = false;
+    }
+
+    public boolean getComputerWin() {
+        return computerWin;
     }
 }

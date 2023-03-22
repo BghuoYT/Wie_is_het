@@ -46,7 +46,7 @@ public class CharacterlijstSpeler {
         }
     }
 
-    public ArrayList<Character> getCharacters() {
+    public ArrayList<Character> getCharactersSpeler() {
         return characters;
     }
 }

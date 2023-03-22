@@ -1,5 +1,6 @@
 package be.kdg.projectbasis.view.gegevens;
 
+import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -29,7 +30,7 @@ public class GegevensView extends VBox {
 
     private void initialiseNodes() {
       this.btnValidate = new Button("Validate Info");
-      this.lblUsername = new SceneLabel("Username: ");
+      this.lblUsername = new StyleLabel("Username: ");
       this.txtUsername = new TextField();
       this.gridpanestyle= new GridPane();
 

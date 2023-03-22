@@ -2,15 +2,15 @@ package be.kdg.projectbasis.model.character;
 import be.kdg.projectbasis.model.character.Enums.*;
 
 public class Character {
-    private String naam;
-    private HaarKleur haarKleur;
-    private Accessoires accessoire;
-    private Haarlengte haarlengte;
-    private Geslacht geslacht;
-    private HaarStijl haarStijl;
-    private Oogkleur oogkleur;
-    private Hoofddeksel hoofddeksel;
-    private Gezichtsbeharing gezichtsbeharing;
+    private final String naam;
+    private final HaarKleur haarKleur;
+    private final Accessoires accessoire;
+    private final Haarlengte haarlengte;
+    private final Geslacht geslacht;
+    private final HaarStijl haarStijl;
+    private final Oogkleur oogkleur;
+    private final Hoofddeksel hoofddeksel;
+    private final Gezichtsbeharing gezichtsbeharing;
 
     public Character(String naam, Geslacht geslacht, Oogkleur oogkleur, HaarKleur haarKleur, Haarlengte haarlengte, HaarStijl haarStijl, Gezichtsbeharing gezichtsbeharing, Hoofddeksel hoofddeksel, Accessoires accessoire) {
         this.naam = naam;

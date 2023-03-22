@@ -5,8 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class SpelregelsPresenter {
-    private ProgrammaModel model;
-    private SpelregelsView view;
+    private final ProgrammaModel model;
+    private final SpelregelsView view;
 
     public SpelregelsPresenter( ProgrammaModel model, SpelregelsView view) {
         this.model = model;

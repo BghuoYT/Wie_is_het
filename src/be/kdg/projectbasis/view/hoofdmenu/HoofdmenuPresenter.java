@@ -10,9 +10,9 @@ import javafx.scene.Scene;
 
 public class HoofdmenuPresenter {
 
-    private ProgrammaModel model;
+    private final ProgrammaModel model;
 
-    private HoofdmenuView view;
+    private final HoofdmenuView view;
 
     public HoofdmenuPresenter(ProgrammaModel model,HoofdmenuView view) {
         this.model = model;

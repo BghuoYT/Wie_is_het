@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
     public class ComputerQuestions {
         // Een lijst met vragen die de computer kan stellen
-        private ArrayList<String> questions;
+        private final ArrayList<String> questions;
         private ArrayList<String> usedQuestions;
 
 

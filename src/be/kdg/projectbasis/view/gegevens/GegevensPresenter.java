@@ -2,16 +2,16 @@ package be.kdg.projectbasis.view.gegevens;
 import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.model.highscore.HighScoreModel;
-import be.kdg.projectbasis.view.spelBord.SpelBordPresenter;
-import be.kdg.projectbasis.view.spelBord.SpelBordView;
+import be.kdg.projectbasis.view.spelBordSetup.SpelBordSetupPresenter;
+import be.kdg.projectbasis.view.spelBordSetup.SpelBordSetupView;
 import javafx.scene.Scene;
 import be.kdg.projectbasis.view.gegevens.newplayer.RegisterPresenter;
 import be.kdg.projectbasis.view.gegevens.newplayer.RegisterView;
 
 public class GegevensPresenter {
 
-    private ProgrammaModel model;
-    private GegevensView view;
+    private final ProgrammaModel model;
+    private final GegevensView view;
 
     public GegevensPresenter(ProgrammaModel model, GegevensView view) {
         this.model= model;
@@ -30,9 +30,10 @@ public class GegevensPresenter {
                 String firstName = player.getVoornaam();
                 String lastName = player.getAchternaam();
                 int wins = player.getWins();
+                model.setUsername(username);
                 System.out.println("Gebruikersnaam gevonden, doorgaan naar spelbord");
+                model.characterListComputer();
                 openSpelbord();
-
             } else {
                 // als de speler niet bestaat, open de GegevensViewNewPlayer
                 createNewUser();
@@ -52,17 +53,14 @@ public class GegevensPresenter {
     }
 
     private void openSpelbord() {
-        SpelBordView spelBordView = new SpelBordView();
-        SpelBordPresenter spelBordPresenter = new SpelBordPresenter(model, spelBordView);
-        Scene spelbord = new Scene(spelBordView);
-        Main.Window.setScene(spelbord);
+        SpelBordSetupView spelBordSetupView = new SpelBordSetupView();
+        SpelBordSetupPresenter spelBordSetupPresenter = new SpelBordSetupPresenter(model, spelBordSetupView);
+        Scene spelBord = new Scene(spelBordSetupView);
+        Main.Window.setScene(spelBord);
         Main.Window.setTitle("Spelbord");
         Main.Window.show();
         Main.Window.setFullScreen(true);
     }
-
-
-
 
 
     public void addWindowEventHandlers() {
