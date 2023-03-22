@@ -4,8 +4,8 @@ import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
@@ -14,14 +14,14 @@ public class SpelBordView extends VBox {
 
 
     private VBox SpelContainer;
-    private ImageView[] CharacterPic;
-    private StyleLabel[] CharacterName;
+    private ImageView[] characterPic;
+    private StyleLabel[] characterName;
     private GridPane GridCharacters;
     private HBox HBoxPrev;
     private StyleLabel LblPrev;
-    private StyleLabel LblVorigeVraag;
+    private Label LblVorigeVraag;
     private StyleLabel LblPrevA;
-    private StyleLabel LblAntwoord;
+    private Label LblAntwoord;
     private HBox HboxVraag;
     private StyleLabel LblVraag;
     private TextField TxtVraag;
@@ -54,13 +54,15 @@ public class SpelBordView extends VBox {
         LblGok = new StyleLabel("Gok");
         TxtGok = new TextField();
         BtnGok = new Button("Gok");
+        //tel hoeveel files in Afbeeldingen/Characters zitten
+
     }
 
     private void layoutNodes() {
         HBoxPrev.getChildren().addAll(LblPrev, LblVorigeVraag, LblPrevA, LblAntwoord);
         HboxVraag.getChildren().addAll(LblVraag, TxtVraag, BtnVraag);
         HboxGok.getChildren().addAll(LblGok, TxtGok, BtnGok);
-        SpelContainer.getChildren().addAll(GridCharacters, HboxVraag, HboxGok);
+        SpelContainer.getChildren().addAll(GridCharacters, HBoxPrev,HboxVraag, HboxGok);
         this.getChildren().add(SpelContainer);
 
             //give evrything padding of 10 on all sides so it looks nice
@@ -109,10 +111,6 @@ public class SpelBordView extends VBox {
             LblVorigeVraag.setAlignment(Pos.CENTER);
             LblPrevA.setAlignment(Pos.CENTER);
             LblAntwoord.setAlignment(Pos.CENTER);
-
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
-        this.setBackground(new Background(achtergrondAfbeelding));
-        this.setAlignment(Pos.CENTER);
         }
 
     public Button getBtnVraag() {
@@ -131,12 +129,20 @@ public class SpelBordView extends VBox {
         return TxtGok;
     }
 
-    public StyleLabel getLblVorigeVraag() {
+    public Label getLblVorigeVraag() {
         return LblVorigeVraag;
     }
 
-    public StyleLabel getLblAntwoord() {
+    public Label getLblAntwoord() {
         return LblAntwoord;
+    }
+
+    public ImageView[] getCharacterPic() {
+        return characterPic;
+    }
+
+    public StyleLabel[] getCharacterName() {
+        return characterName;
     }
 }
 

@@ -37,7 +37,8 @@ public class CharacterlijstComputer {
                     String gezichtsbeharing = element.getAttribute("gezichtsbeharing").toLowerCase();
                     String hoofddeksel = element.getAttribute("hoofddeksel").toLowerCase();
                     String accessoires = element.getAttribute("accessoires").toLowerCase();
-                    charactersComputer.add(new Character(name, Geslacht.valueOf(geslacht), Oogkleur.valueOf(oogKleur), HaarKleur.valueOf(haarKleur), Haarlengte.valueOf(haarLengte), HaarStijl.valueOf(haarStijl), Gezichtsbeharing.valueOf(gezichtsbeharing), Hoofddeksel.valueOf(hoofddeksel), Accessoires.valueOf(accessoires)));
+                    String afbeelding = element.getAttribute("afbeelding");
+                    charactersComputer.add(new Character(name, Geslacht.valueOf(geslacht), Oogkleur.valueOf(oogKleur), HaarKleur.valueOf(haarKleur), Haarlengte.valueOf(haarLengte), HaarStijl.valueOf(haarStijl), Gezichtsbeharing.valueOf(gezichtsbeharing), Hoofddeksel.valueOf(hoofddeksel), Accessoires.valueOf(accessoires), afbeelding));
                 }
             }
         } catch (Exception e) {

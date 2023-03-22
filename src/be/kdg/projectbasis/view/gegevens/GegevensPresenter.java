@@ -53,7 +53,8 @@ public class GegevensPresenter {
     }
 
     private void openSpelbord() {
-        SpelBordSetupView spelBordSetupView = new SpelBordSetupView();
+        ProgrammaModel model = new ProgrammaModel();
+        SpelBordSetupView spelBordSetupView = new SpelBordSetupView(model);
         SpelBordSetupPresenter spelBordSetupPresenter = new SpelBordSetupPresenter(model, spelBordSetupView);
         Scene spelBord = new Scene(spelBordSetupView);
         Main.Window.setScene(spelBord);

@@ -38,12 +38,10 @@ public class RegisterPresenter {
                 System.out.println("Voer een geldig e-mailadres in");
                 return;
             }
-
             ProgrammaModel.setUsername(username);
             HighScoreModel newPlayer = new HighScoreModel(username, voornaam, achternaam, email, 0);
             System.out.println(newPlayer);
             HighScoreModel.savePlayerInfo(username, voornaam, achternaam, email, 0);
-
             // laad de spelerinfo
             System.out.println("gebruiker aangemaakt, doorgaan naar spelbord");
             openSpelbord();
@@ -51,7 +49,8 @@ public class RegisterPresenter {
 
     }
     private void openSpelbord() {
-        SpelBordSetupView spelBordSetupView = new SpelBordSetupView();
+        ProgrammaModel model = new ProgrammaModel();
+        SpelBordSetupView spelBordSetupView = new SpelBordSetupView(model);
         SpelBordSetupPresenter spelBordSetupPresenter = new SpelBordSetupPresenter(model, spelBordSetupView);
         Scene spelBord = new Scene(spelBordSetupView);
         Main.Window.setScene(spelBord);

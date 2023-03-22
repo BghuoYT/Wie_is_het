@@ -11,8 +11,9 @@ public class Character {
     private final Oogkleur oogkleur;
     private final Hoofddeksel hoofddeksel;
     private final Gezichtsbeharing gezichtsbeharing;
+    private final String afbeelding;
 
-    public Character(String naam, Geslacht geslacht, Oogkleur oogkleur, HaarKleur haarKleur, Haarlengte haarlengte, HaarStijl haarStijl, Gezichtsbeharing gezichtsbeharing, Hoofddeksel hoofddeksel, Accessoires accessoire) {
+    public Character(String naam, Geslacht geslacht, Oogkleur oogkleur, HaarKleur haarKleur, Haarlengte haarlengte, HaarStijl haarStijl, Gezichtsbeharing gezichtsbeharing, Hoofddeksel hoofddeksel, Accessoires accessoire, String afbeelding) {
         this.naam = naam;
         this.geslacht = geslacht;
         this.oogkleur = oogkleur;
@@ -22,6 +23,7 @@ public class Character {
         this.gezichtsbeharing = gezichtsbeharing;
         this.hoofddeksel = hoofddeksel;
         this.accessoire = accessoire;
+        this.afbeelding = afbeelding;
     }
 
     public String getNaam() {
@@ -58,6 +60,10 @@ public class Character {
 
     public Gezichtsbeharing getGezichtsbeharing() {
         return gezichtsbeharing;
+    }
+
+    public String getAfbeelding() {
+        return afbeelding;
     }
 
 

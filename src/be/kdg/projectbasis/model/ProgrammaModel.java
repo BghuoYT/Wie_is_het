@@ -3,15 +3,9 @@ package be.kdg.projectbasis.model;
 import be.kdg.projectbasis.model.character.Character;
 import be.kdg.projectbasis.model.character.CharacterlijstComputer;
 import be.kdg.projectbasis.model.character.CharacterlijstSpeler;
-import be.kdg.projectbasis.model.highscore.HighScoreModel;
 import be.kdg.projectbasis.model.spelbeurten.ComputerQuestions;
-import be.kdg.projectbasis.model.spelbeurten.SpelbeurtComputer;
-import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class ProgrammaModel{
     private static String username;
@@ -24,8 +18,6 @@ public class ProgrammaModel{
     private String answerC;
     private Character gekozenCharacter;
     private Character teRadenCharacter;
-    private String[] remainingCharacterNamesP;
-
     public boolean spelerWin = false;
     public boolean computerWin = false;
 
@@ -35,7 +27,9 @@ public class ProgrammaModel{
     }
     public void characterListComputer() {
         CharacterlijstComputer characterlijstComputer = new CharacterlijstComputer();
+
         remainingCharactersC = new ArrayList<>();
+
 
         System.out.println(" ");
         // Add all characters to the remaining characters list and display them
@@ -43,6 +37,8 @@ public class ProgrammaModel{
             System.out.println("- " + character.getNaam());
             remainingCharactersC.add(character);
         }
+
+
     }
     public void setupComputer(String gekozenCharacterNaam) {
         //haal gekozen character uit lijst van characters
@@ -174,15 +170,8 @@ public class ProgrammaModel{
         }
     }
 
-    public ArrayList<Character> getRemainingCharactersC() {
-        return remainingCharactersC;
-    }
-
-    public ArrayList<Character> getRemainingCharactersP() {
-        return remainingCharactersP;
-    }
-
     public String getAnswerS() {
         return answerS;
     }
+
 }

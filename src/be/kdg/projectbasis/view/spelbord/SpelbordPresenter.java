@@ -4,6 +4,7 @@ import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
 
 
+
 public class SpelBordPresenter {
     private ProgrammaModel model;
 
@@ -21,6 +22,8 @@ public class SpelBordPresenter {
         view.getBtnVraag().setOnAction(event -> {
             String question = view.getTxtVraag().getText();
             model.startSpelbeurtSpeler(question);
+            view.getLblAntwoord().setText(model.getAnswerS());
+            view.getLblVorigeVraag().setText(question);
             System.out.println("vraag gesteld");
             model.startSpelbeurtComputer();
             System.out.println("het is terug jou beurt");
