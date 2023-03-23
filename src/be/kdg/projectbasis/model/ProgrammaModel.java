@@ -4,6 +4,7 @@ import be.kdg.projectbasis.model.character.Character;
 import be.kdg.projectbasis.model.character.CharacterlijstComputer;
 import be.kdg.projectbasis.model.character.CharacterlijstSpeler;
 import be.kdg.projectbasis.model.spelbeurten.ComputerQuestions;
+import be.kdg.projectbasis.view.spelBord.SpelBordView;
 
 import java.util.*;
 
@@ -37,6 +38,14 @@ public class ProgrammaModel{
             System.out.println("- " + character.getNaam());
             remainingCharactersC.add(character);
         }
+
+        SpelBordView.setAantalCharacters = remainingCharactersC.size();
+        //zet namen van alle characters in setCharacters string[]
+        String[] Characters = new String[remainingCharactersC.size()];
+        for (int i = 0; i < remainingCharactersC.size(); i++) {
+            Characters[i] = remainingCharactersC.get(i).getNaam();
+        }
+        SpelBordView.setCharacters = Characters;
 
 
     }

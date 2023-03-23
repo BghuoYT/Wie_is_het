@@ -9,10 +9,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class SpelBordView extends VBox {
 
 
+    public static int setAantalCharacters;
+    public static String[] setCharacters;
     private VBox SpelContainer;
     private ImageView[] characterPic;
     private StyleLabel[] characterName;
@@ -30,6 +35,9 @@ public class SpelBordView extends VBox {
     private StyleLabel LblGok;
     private TextField TxtGok;
     private Button BtnGok;
+
+    private VBox[] VboxCharacter;
+
     private ProgrammaModel programmaModel = new ProgrammaModel();
 
     public SpelBordView() {
@@ -54,8 +62,29 @@ public class SpelBordView extends VBox {
         LblGok = new StyleLabel("Gok");
         TxtGok = new TextField();
         BtnGok = new Button("Gok");
-        //tel hoeveel files in Afbeeldingen/Characters zitten
+        System.out.println("aantal characters: " + setAantalCharacters);
+        System.out.println("deze characters doen mee " + Arrays.toString(setCharacters));
 
+        //maak voor elk character in de setCharacters array een label aan met de naam
+        characterName = new StyleLabel[setCharacters.length];
+        characterPic = new ImageView[setCharacters.length];
+        VboxCharacter = new VBox[setCharacters.length];
+        for (int i = 0; i < setCharacters.length; i++) {
+            characterName[i] = new StyleLabel(setCharacters[i]);
+            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/Alice.png");
+            VboxCharacter[i] = new VBox();
+            VboxCharacter[i].getChildren().addAll(characterPic[i], characterName[i]);
+            GridCharacters.add(VboxCharacter[i],i % 5, i / 5);
+        }
+
+        HBoxPrev.setAlignment(Pos.CENTER);
+        HboxVraag.setAlignment(Pos.CENTER);
+        HboxGok.setAlignment(Pos.CENTER);
+        GridCharacters.setAlignment(Pos.CENTER);
+        TxtVraag.setAlignment(Pos.CENTER);
+        TxtGok.setAlignment(Pos.CENTER);
+        BtnVraag.setAlignment(Pos.CENTER);
+        BtnGok.setAlignment(Pos.CENTER);
     }
 
     private void layoutNodes() {
@@ -80,8 +109,46 @@ public class SpelBordView extends VBox {
             HboxVraag.setSpacing(10);
             HboxGok.setSpacing(10);
             HBoxPrev.setSpacing(10);
+        GridCharacters.setHgap(20);
+        GridCharacters.setVgap(10);
 
-            //make every SceneLabel the same size
+        for (int i = 0; i < VboxCharacter.length; i++) {
+            characterPic[i].setFitHeight(120);
+            characterPic[i].setFitWidth(120);
+            VboxCharacter[i].setMinWidth(100);
+            VboxCharacter[i].setMinHeight(100);
+            VboxCharacter[i].setSpacing(10);
+        }
+
+            //Limit all vboxCharacter size to 100
+
+
+        //set hbox spacing to 10
+        HboxVraag.setSpacing(10);
+        HboxGok.setSpacing(10);
+        HBoxPrev.setSpacing(10);
+
+
+        //make every textfield the same size
+        TxtVraag.setMinWidth(100);
+        TxtGok.setMinWidth(100);
+
+        //make every button the same size
+        BtnVraag.setMinWidth(50);
+        BtnGok.setMinWidth(50);
+
+        GridCharacters.setMinWidth(250);
+        GridCharacters.setMinHeight(250);
+
+        //align everything to middle of the screen
+
+
+
+        //set hbox spacing to 10
+        HboxVraag.setSpacing(10);
+        HboxGok.setSpacing(10);
+        HBoxPrev.setSpacing(10);
+
 
             //make every textfield the same size
             TxtVraag.setMinWidth(100);
@@ -144,5 +211,6 @@ public class SpelBordView extends VBox {
     public StyleLabel[] getCharacterName() {
         return characterName;
     }
+
 }
 

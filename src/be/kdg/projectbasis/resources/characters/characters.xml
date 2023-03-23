@@ -20,5 +20,4 @@
     <character name="Fien" geslacht="vrouw" oogkleur="grijs" haarkleur="zwart" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Fien.jpg"/>
     <character name="Jan" geslacht="man" oogkleur="blauw" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen" afbeelding="Jan.jpg"/>
     <character name="Amalia" geslacht="vrouw" oogkleur="groen" haarkleur="blond" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen" afbeelding="Amalia.jpg"/>
-    <character name="Wout" geslacht="man" oogkleur="bruin" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing="snor" hoofddeksel="pet" accessoires= "geen" afbeelding="Wout.jpg"/>
 </xml>
