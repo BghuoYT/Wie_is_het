@@ -2,7 +2,9 @@ package be.kdg.projectbasis.view.spelBord;
 
 import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
-
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 
 public class SpelBordPresenter {
@@ -30,6 +32,8 @@ public class SpelBordPresenter {
             model.refreshCharacters();
             System.out.println("stel een nieuwe vraag");
         });
+
+
         view.getBtnGok().setOnAction(event -> {
             String gok = view.getTxtGok().getText();
             model.maakGok(gok);

@@ -1,8 +1,13 @@
 package be.kdg.projectbasis.view.spelregels;
 
+import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
+import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
+import be.kdg.projectbasis.view.gegevens.GegevensView;
+import be.kdg.projectbasis.view.spelBord.SpelBordView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 
 public class SpelregelsPresenter {
     private final ProgrammaModel model;
@@ -16,12 +21,11 @@ public class SpelregelsPresenter {
     }
 
     private void addEventHandlers() {
-        view.getBtnInvoer().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                view.getTxtUitvoer().setText("Hallo iedereen!");
-            }
-        });
+
+
+
+
+
     }
 
     private void updateView() {

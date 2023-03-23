@@ -41,9 +41,10 @@ public class ProgrammaModel{
 
         SpelBordView.setAantalCharacters = remainingCharactersC.size();
         //zet namen van alle characters in setCharacters string[]
-        String[] Characters = new String[remainingCharactersC.size()];
-        for (int i = 0; i < remainingCharactersC.size(); i++) {
-            Characters[i] = remainingCharactersC.get(i).getNaam();
+        ArrayList<Character> Characters = new ArrayList<>();
+        for (Character character : characterlijstComputer.getCharactersComputer()) {
+            System.out.println("- " + character.getNaam());
+            Characters.add(character);
         }
         SpelBordView.setCharacters = Characters;
 

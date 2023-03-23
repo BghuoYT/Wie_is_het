@@ -4,9 +4,17 @@ import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
 import be.kdg.projectbasis.view.gegevens.GegevensView;
+import be.kdg.projectbasis.view.spelregels.SpelregelsPresenter;
+import be.kdg.projectbasis.view.spelregels.SpelregelsView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.util.Optional;
 
 public class HoofdmenuPresenter {
 
@@ -24,12 +32,44 @@ public class HoofdmenuPresenter {
 
 
     private void addEventHandelers() {
-       view.getBtnNieuwSpel().setOnAction(new EventHandler<ActionEvent>() {
-           @Override
-           public void handle(ActionEvent actionEvent) {
-               updateView();
-           }
-       });
+        view.getBtnNieuwSpel().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                updateView();
+            }
+        });
+
+        view.getBtnHandleiding().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                SpelregelsView spelregelsView = new SpelregelsView();
+                SpelregelsPresenter spelregelsPresenter = new SpelregelsPresenter(model,spelregelsView);
+                Stage spelRegelStage = new Stage();
+                spelRegelStage.initOwner(view.getScene().getWindow());
+                spelRegelStage.initModality(Modality.APPLICATION_MODAL);
+                spelRegelStage.setScene(new Scene(spelregelsView));
+                spelRegelStage.setX(view.getScene().getWindow().getX() + 100);
+                spelRegelStage.setY(view.getScene().getWindow().getY() + 100);
+                spelRegelStage.setTitle("Spelregels");
+                spelRegelStage.showAndWait();
+            }
+        });
+
+        view.getBtnAfsluiten().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Afsluiten");
+                alert.setHeaderText("Wil u de spel afsluiten ?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent()&& result.get() == ButtonType.OK){
+                    System.exit(0);
+                }
+
+            }
+        });
+
+
     }
 
     private void updateView() {
