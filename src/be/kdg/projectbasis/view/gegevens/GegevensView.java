@@ -19,6 +19,8 @@ public class GegevensView extends VBox {
 
     private GridPane gridpanestyle;
 
+    private Button btnBack;
+
 
 
     public GegevensView() {
@@ -29,10 +31,11 @@ public class GegevensView extends VBox {
 
 
     private void initialiseNodes() {
-      this.btnValidate = new Button("Validate Info");
-      this.lblUsername = new StyleLabel("Username: ");
-      this.txtUsername = new TextField();
-      this.gridpanestyle= new GridPane();
+        this.btnValidate = new Button("Validate Info");
+        this.lblUsername = new StyleLabel("Username: ");
+        this.txtUsername = new TextField();
+        this.gridpanestyle= new GridPane();
+        this.btnBack = new Button("Back");
 
 
     }
@@ -53,18 +56,24 @@ public class GegevensView extends VBox {
         return gridpanestyle;
     }
 
+    public Button getBtnBack() {
+        return btnBack;
+    }
+
     private void layoutNodes() {
 
         gridpanestyle.add(btnValidate, 2,6);
         gridpanestyle.add(lblUsername, 0, 0);
         gridpanestyle.add(txtUsername, 3, 0);
+        gridpanestyle.add(btnBack,3,6);
         gridpanestyle.setAlignment(Pos.CENTER);
         GridPane.setHalignment(lblUsername, HPos.RIGHT);
         gridpanestyle.setHgap(20);
         this.getChildren().add(gridpanestyle);
 
 
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/Afbeeldingen/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }

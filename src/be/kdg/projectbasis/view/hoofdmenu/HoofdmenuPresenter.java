@@ -4,6 +4,8 @@ import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
 import be.kdg.projectbasis.view.gegevens.GegevensView;
+import be.kdg.projectbasis.view.nieuwCharacter.NieuwCharacterPresenter;
+import be.kdg.projectbasis.view.nieuwCharacter.NieuwCharacterView;
 import be.kdg.projectbasis.view.spelregels.SpelregelsPresenter;
 import be.kdg.projectbasis.view.spelregels.SpelregelsView;
 import javafx.event.ActionEvent;
@@ -55,6 +57,19 @@ public class HoofdmenuPresenter {
             }
         });
 
+        view.getBtnNieuwcharacters().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                NieuwCharacterView nieuwCharacterView = new NieuwCharacterView();
+                NieuwCharacterPresenter nieuwCharacterPresenter = new NieuwCharacterPresenter(model, nieuwCharacterView);
+                Scene nieuwcharacter = new Scene(nieuwCharacterView);
+                Main.Window.setScene(nieuwcharacter);
+                Main.Window.setTitle("Nieuw Characters");
+                Main.Window.show();
+                Main.Window.setFullScreen(true);
+            }
+        });
+
         view.getBtnAfsluiten().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -68,7 +83,6 @@ public class HoofdmenuPresenter {
 
             }
         });
-
 
     }
 

@@ -20,9 +20,9 @@ public class HoofdmenuView extends VBox {
     private Button btnNieuwSpel;
     private Button btnTopscoren;
     private Button btnSpelregels;
+
+    private Button btnNieuwcharacters;
     private Button btnAfsluiten;
-
-
 
 
     public HoofdmenuView() {
@@ -30,10 +30,14 @@ public class HoofdmenuView extends VBox {
         this.layoutNodes();
     }
 
+
+
+
     private void initialiseNodes() {
         btnNieuwSpel = new HoofdmenuButton("Nieuw spel");
         btnTopscoren = new HoofdmenuButton("Top scores");
         btnSpelregels = new HoofdmenuButton("Spelregels");
+        btnNieuwcharacters = new HoofdmenuButton("Nieuw Characters");
         btnAfsluiten = new HoofdmenuButton("Afsluiten");
     }
 
@@ -41,9 +45,10 @@ public class HoofdmenuView extends VBox {
         this.getChildren().add(btnNieuwSpel);
         this.getChildren().add(btnTopscoren);
         this.getChildren().add(btnSpelregels);
+        this.getChildren().add(btnNieuwcharacters);
         this.getChildren().add(btnAfsluiten);
         this.setSpacing(50);
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("src/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }
@@ -62,6 +67,10 @@ public class HoofdmenuView extends VBox {
 
     public Button getBtnHandleiding() {
         return btnSpelregels;
+    }
+
+    public Button getBtnNieuwcharacters() {
+        return btnNieuwcharacters;
     }
 
     public Button getBtnAfsluiten(){return btnAfsluiten;}
