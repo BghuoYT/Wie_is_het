@@ -1,26 +1,29 @@
 package be.kdg.projectbasis.view.spelBord;
 import be.kdg.projectbasis.model.ProgrammaModel;
+import be.kdg.projectbasis.model.character.Character;
+import be.kdg.projectbasis.view.standaardElementen.CharacterButton;
 import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class SpelBordView extends VBox {
 
 
     public static int setAantalCharacters;
-    public static String[] setCharacters;
+    public static ArrayList<Character> setCharacters;
     private VBox SpelContainer;
     private ImageView[] characterPic;
-    private StyleLabel[] characterName;
+    private CharacterButton[] characterName;
     private GridPane GridCharacters;
     private HBox HBoxPrev;
     private StyleLabel LblPrev;
@@ -37,6 +40,7 @@ public class SpelBordView extends VBox {
     private Button BtnGok;
 
     private VBox[] VboxCharacter;
+    private int i;
 
     private ProgrammaModel programmaModel = new ProgrammaModel();
 
@@ -45,7 +49,6 @@ public class SpelBordView extends VBox {
         this.initialiseNodes();
         this.layoutNodes();
     }
-
     private void initialiseNodes() {
         SpelContainer = new VBox();
         GridCharacters = new GridPane();
@@ -63,19 +66,31 @@ public class SpelBordView extends VBox {
         TxtGok = new TextField();
         BtnGok = new Button("Gok");
         System.out.println("aantal characters: " + setAantalCharacters);
-        System.out.println("deze characters doen mee " + Arrays.toString(setCharacters));
+        System.out.println("deze characters doen mee " + setCharacters);
 
         //maak voor elk character in de setCharacters array een label aan met de naam
-        characterName = new StyleLabel[setCharacters.length];
-        characterPic = new ImageView[setCharacters.length];
-        VboxCharacter = new VBox[setCharacters.length];
-        for (int i = 0; i < setCharacters.length; i++) {
-            characterName[i] = new StyleLabel(setCharacters[i]);
-            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/"+setCharacters[i] +".png");
+        characterName = new CharacterButton[setCharacters.size()];
+        characterPic = new ImageView[setCharacters.size()];
+        VboxCharacter = new VBox[setCharacters.size()];
+        for (Character character : setCharacters) {
+            characterName[i] = new CharacterButton(character.getNaam());
+            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/"+ character.getNaam() +".png");
             VboxCharacter[i] = new VBox();
+
+            // Informatie als je over het foto hovert
+            Tooltip tooltip = new Tooltip(character.getNaam().toUpperCase() + "\ngeslacht: " + character.getGeslacht() + "\noogkleur: " + character.getOogkleur() +"\nhaarkleur: " + character.getHaarKleur() + "\nhaarlengte: "
+                    + character.getHaarlengte() + "\nhaarstijl: " + character.getHaarStijl() + "\ngezichtsbeharing: " + character.getGezichtsbeharing() + "\nhoofddeksel: " + character.getHoofddeksel() + "\naccessoires: " + character.getAccessoires() + "\nKlik op de naam om te verwijderen");
+            Tooltip.install(characterPic[i], tooltip);
+
+            //info als je over naam hovert
+            Tooltip tooltip2 = new Tooltip("klik hier om "+ character.getNaam().toUpperCase() + " uit het spelbord te verwijderen \nHover over de afbeelding voor info over het personage");
+            Tooltip.install(characterName[i], tooltip2);
             VboxCharacter[i].getChildren().addAll(characterPic[i], characterName[i]);
             GridCharacters.add(VboxCharacter[i],i % 7, i % 3);
+
+            i++;
         }
+
 
 
         HBoxPrev.setAlignment(Pos.CENTER);
@@ -95,7 +110,6 @@ public class SpelBordView extends VBox {
         SpelContainer.getChildren().addAll(GridCharacters, HBoxPrev,HboxVraag, HboxGok);
         this.getChildren().add(SpelContainer);
 
-            //give evrything padding of 10 on all sides so it looks nice
             SpelContainer.setPadding(new Insets(10, 10, 10, 10));
             HBoxPrev.setPadding(new Insets(10, 10, 10, 10));
             HboxVraag.setPadding(new Insets(10, 10, 10, 10));
@@ -106,7 +120,6 @@ public class SpelBordView extends VBox {
             BtnVraag.setPadding(new Insets(10, 10, 10, 10));
             BtnGok.setPadding(new Insets(10));
 
-            //set hbox spacing to 10
             HboxVraag.setSpacing(10);
             HboxGok.setSpacing(10);
             HBoxPrev.setSpacing(10);
@@ -121,48 +134,36 @@ public class SpelBordView extends VBox {
             VboxCharacter[i].setSpacing(10);
         }
 
-            //Limit all vboxCharacter size to 100
 
-
-        //set hbox spacing to 10
         HboxVraag.setSpacing(10);
         HboxGok.setSpacing(10);
         HBoxPrev.setSpacing(10);
 
-
-        //make every textfield the same size
         TxtVraag.setMinWidth(100);
         TxtGok.setMinWidth(100);
 
-        //make every button the same size
         BtnVraag.setMinWidth(50);
         BtnGok.setMinWidth(50);
 
         GridCharacters.setMinWidth(250);
         GridCharacters.setMinHeight(250);
 
-        //align everything to middle of the screen
 
-
-
-        //set hbox spacing to 10
         HboxVraag.setSpacing(10);
         HboxGok.setSpacing(10);
         HBoxPrev.setSpacing(10);
 
 
-            //make every textfield the same size
             TxtVraag.setMinWidth(100);
             TxtGok.setMinWidth(100);
 
-            //make every button the same size
+
             BtnVraag.setMinWidth(50);
             BtnGok.setMinWidth(50);
 
             GridCharacters.setMinWidth(250);
             GridCharacters.setMinHeight(250);
 
-            //align everything to middle of the screen
             GridCharacters.setAlignment(Pos.CENTER);
             HboxVraag.setAlignment(Pos.CENTER);
             HboxGok.setAlignment(Pos.CENTER);
@@ -209,9 +210,26 @@ public class SpelBordView extends VBox {
         return characterPic;
     }
 
-    public StyleLabel[] getCharacterName() {
+    public CharacterButton[] getCharacterName() {
         return characterName;
     }
+    public VBox[] getVboxCharacter() {
+        return VboxCharacter;
+    }
+
+    @FunctionalInterface
+    public interface ButtonActionHandler {
+        void handleAction(int index);
+    }
+
+    ButtonActionHandler handler = new ButtonActionHandler() {
+        @Override
+        public void handleAction(int index) {
+            characterPic[index].setVisible(false);
+            characterName[index].setVisible(false);
+        }
+    };
+
 
 }
 
