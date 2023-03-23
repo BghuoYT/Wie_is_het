@@ -5,6 +5,7 @@ import be.kdg.projectbasis.model.character.CharacterlijstComputer;
 import be.kdg.projectbasis.model.character.CharacterlijstSpeler;
 import be.kdg.projectbasis.model.spelbeurten.ComputerQuestions;
 import be.kdg.projectbasis.view.spelBord.SpelBordView;
+import be.kdg.projectbasis.view.spelBordSetup.SpelBordSetupView;
 
 import java.util.*;
 
@@ -47,7 +48,7 @@ public class ProgrammaModel{
             Characters.add(character);
         }
         SpelBordView.setCharacters = Characters;
-
+        SpelBordSetupView.setCharacters = Characters;
 
     }
     public void setupComputer(String gekozenCharacterNaam) {

@@ -1,28 +1,20 @@
 package be.kdg.projectbasis.view.spelBordSetup;
 
-import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.model.character.Character;
-import be.kdg.projectbasis.model.character.Enums.*;
+import be.kdg.projectbasis.view.standaardElementen.CharacterButton;
 import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import javafx.scene.control.Tooltip;
+import javafx.stage.Screen;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.stream.events.Characters;
-import java.io.File;
 import java.util.ArrayList;
 
 public class SpelBordSetupView extends VBox {
@@ -30,26 +22,23 @@ public class SpelBordSetupView extends VBox {
     private VBox characterBox; // container voor de foto's en labels
 
     private VBox SpelContainer;
-    private ToggleButton[] characterPic;
-    private Label[] characterName;
+    private ImageView[] characterPic;
+    private CharacterButton[] characterName;
     private GridPane GridCharacters;
     private HBox HboxVraag;
     private Label LblKeuze;
     private TextField TxtKeuze;
     private Button BtnSubmit;
 
-
-
+    public static ArrayList<Character> setCharacters;
+    private VBox[] VboxCharacter;
+    private int i = 0;
 
     // constructor
     public SpelBordSetupView() {
         this.initialiseNodes();
         this.layoutNodes();
     }
-
-
-
-
 
     private void initialiseNodes() {
         SpelContainer = new VBox();
@@ -58,41 +47,69 @@ public class SpelBordSetupView extends VBox {
         LblKeuze = new StyleLabel("kies een character dat de computer moet raden");
         TxtKeuze = new TextField();
         BtnSubmit = new Button("OK");
-        characterPic = new ToggleButton[24];
 
+        if (setCharacters != null) {
+            characterName = new CharacterButton[setCharacters.size()];
+            characterPic = new ImageView[setCharacters.size()];
+            VboxCharacter = new VBox[setCharacters.size()];
+            for (Character character : setCharacters) {
+                characterName[i] = new CharacterButton(character.getNaam());
+                characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/" + character.getNaam() + ".png");
+                VboxCharacter[i] = new VBox();
 
+                // Informatie als je over het foto hovert
+                Tooltip tooltip = new Tooltip(character.getNaam().toUpperCase() + "\ngeslacht: " + character.getGeslacht() + "\noogkleur: " + character.getOogkleur() + "\nhaarkleur: " + character.getHaarKleur() + "\nhaarlengte: "
+                        + character.getHaarlengte() + "\nhaarstijl: " + character.getHaarStijl() + "\ngezichtsbeharing: " + character.getGezichtsbeharing() + "\nhoofddeksel: " + character.getHoofddeksel() + "\naccessoires: " + character.getAccessoires() + "\nKlik op de naam om te verwijderen");
+                Tooltip.install(characterPic[i], tooltip);
+
+                //info als je over naam hovert
+                Tooltip tooltip2 = new Tooltip("klik hier om " + character.getNaam().toUpperCase() + " uit het spelbord te verwijderen \nHover over de afbeelding voor info over het personage");
+                Tooltip.install(characterName[i], tooltip2);
+                VboxCharacter[i].getChildren().addAll(characterPic[i], characterName[i]);
+                GridCharacters.add(VboxCharacter[i], i % 7, i % 3);
+
+                i++;
+            }
+        }
 
     }
 
     private void layoutNodes() {
-        // Set background image
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        double screenWidth = visualBounds.getWidth();
+        double screenHeight = visualBounds.getHeight();
 
-        // Create grid for characters
-        GridCharacters.setAlignment(Pos.CENTER);
-        GridCharacters.setHgap(20);
-        GridCharacters.setVgap(20);
 
-        // Add character images and names to grid
+        if (setCharacters != null) {
+            for (int i = 0; i < VboxCharacter.length; i++) {
+                characterPic[i].setFitHeight(0.15 * screenHeight);
+                characterPic[i].setFitWidth((0.15 / 4 * 3 ) * screenHeight);
+                VboxCharacter[i].setMinHeight((0.10 / 3 * 5) * screenHeight);
+                VboxCharacter[i].setMinWidth(0.08 * screenWidth);
+                VboxCharacter[i].setMaxWidth(0.15 * screenWidth);
+                VboxCharacter[i].setMaxHeight((0.15 / 3 * 5) * screenHeight);
+                VboxCharacter[i].setSpacing(10);
+            }
+        }
+        GridCharacters.setVgap(25);
+        GridCharacters.setMaxWidth(0.5 * screenWidth);
+        GridCharacters.setMaxHeight(0.5 * screenHeight);
 
-        // Create box for question and text field
-        TxtKeuze.setPrefWidth(100);
-        LblKeuze.setPrefWidth(300);
+        TxtKeuze.setPrefWidth(0.1 * screenWidth);
         HboxVraag.setAlignment(Pos.CENTER);
-        HboxVraag.setPadding(new Insets(10));
-        HboxVraag.setSpacing(10);
+        HboxVraag.setPadding(new Insets(0.02 * screenHeight));
+        HboxVraag.setSpacing(0.01 * screenWidth);
         HboxVraag.getChildren().addAll(LblKeuze, TxtKeuze, BtnSubmit);
 
-        // Add grid and box to container
         SpelContainer.setAlignment(Pos.CENTER);
-        SpelContainer.setPadding(new Insets(50, 20, 50, 20));
-        SpelContainer.setSpacing(50);
+        SpelContainer.setPadding(new Insets(0.05 * screenHeight, 0.02 * screenWidth, 0.05 * screenHeight, 0.02 * screenWidth));
+        SpelContainer.setSpacing(0.05 * screenHeight);
         SpelContainer.getChildren().addAll(GridCharacters, HboxVraag);
 
-        // Add container to view
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(SpelContainer);
 
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(screenWidth, screenHeight, true, true, true, true)); // gebruik de breedte en hoogte van het scherm
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }

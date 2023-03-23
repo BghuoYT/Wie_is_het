@@ -4,6 +4,8 @@ import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
 import be.kdg.projectbasis.view.gegevens.GegevensView;
+import be.kdg.projectbasis.view.highscore.HighscorePresenter;
+import be.kdg.projectbasis.view.highscore.HighscoreView;
 import be.kdg.projectbasis.view.nieuwCharacter.NieuwCharacterPresenter;
 import be.kdg.projectbasis.view.nieuwCharacter.NieuwCharacterView;
 import be.kdg.projectbasis.view.spelregels.SpelregelsPresenter;
@@ -38,6 +40,19 @@ public class HoofdmenuPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 updateView();
+            }
+        });
+
+        view.getBtnHoogsteScores().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                HighscoreView highscoreView = new HighscoreView();
+                HighscorePresenter highscorePresenter = new HighscorePresenter(model, highscoreView);
+                Scene highscoren = new Scene(highscoreView);
+                Main.Window.setScene(highscoren);
+                Main.Window.setTitle("Highscoren");
+                Main.Window.show();
+                Main.Window.setFullScreen(true);
             }
         });
 
