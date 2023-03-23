@@ -71,11 +71,12 @@ public class SpelBordView extends VBox {
         VboxCharacter = new VBox[setCharacters.length];
         for (int i = 0; i < setCharacters.length; i++) {
             characterName[i] = new StyleLabel(setCharacters[i]);
-            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/Alice.png");
+            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/"+setCharacters[i] +".png");
             VboxCharacter[i] = new VBox();
             VboxCharacter[i].getChildren().addAll(characterPic[i], characterName[i]);
-            GridCharacters.add(VboxCharacter[i],i % 5, i / 5);
+            GridCharacters.add(VboxCharacter[i],i % 7, i % 3);
         }
+
 
         HBoxPrev.setAlignment(Pos.CENTER);
         HboxVraag.setAlignment(Pos.CENTER);
@@ -113,10 +114,10 @@ public class SpelBordView extends VBox {
         GridCharacters.setVgap(10);
 
         for (int i = 0; i < VboxCharacter.length; i++) {
-            characterPic[i].setFitHeight(120);
-            characterPic[i].setFitWidth(120);
-            VboxCharacter[i].setMinWidth(100);
-            VboxCharacter[i].setMinHeight(100);
+            characterPic[i].setFitWidth(150);
+            characterPic[i].setFitHeight(200);
+            VboxCharacter[i].setMinWidth(120);
+            VboxCharacter[i].setMinHeight(120);
             VboxCharacter[i].setSpacing(10);
         }
 

@@ -17,7 +17,7 @@
     <character name="Bram" geslacht="man" oogkleur="bruin" haarkleur="kaal" haarlengte="kaal" haarstijl= "kaal" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Bram.jpg"/>
     <character name="Lotte" geslacht="vrouw" oogkleur="bruin" haarkleur="bruin" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "geen" afbeelding="Lotte.jpg"/>
     <character name="Maarten" geslacht="man" oogkleur="blauw" haarkleur="blond" haarlengte="schouderlengte" haarstijl="golvend" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "halsketting" afbeelding="Maarten.jpg"/>
-    <character name="Fien" geslacht="vrouw" oogkleur="grijs" haarkleur="zwart" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Fien.jpg"/>
+    <character name="Fien" geslacht="vrouw" oogkleur="bruin" haarkleur="zwart" haarlengte="lang" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires= "geen" afbeelding="Fien.jpg"/>
     <character name="Jan" geslacht="man" oogkleur="blauw" haarkleur="bruin" haarlengte="schouderlengte" haarstijl="krullen" gezichtsbeharing= "geen" hoofddeksel="hoed" accessoires= "oorbellen" afbeelding="Jan.jpg"/>
     <character name="Amalia" geslacht="vrouw" oogkleur="groen" haarkleur="blond" haarlengte="lang" haarstijl="stijl" gezichtsbeharing= "geen" hoofddeksel= "geen" accessoires="oorbellen" afbeelding="Amalia.jpg"/>
 </xml>
