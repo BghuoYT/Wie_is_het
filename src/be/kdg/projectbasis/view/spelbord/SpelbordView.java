@@ -3,16 +3,18 @@ import be.kdg.projectbasis.model.ProgrammaModel;
 import be.kdg.projectbasis.model.character.Character;
 import be.kdg.projectbasis.view.standaardElementen.CharacterButton;
 import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Screen;
+
 import java.util.ArrayList;
 
 
@@ -21,11 +23,15 @@ public class SpelBordView extends VBox {
 
     public static int setAantalCharacters;
     public static ArrayList<Character> setCharacters;
+    public static ArrayList<Character> setRemainingCharactersC;
+    private static String ComputerVraag;
+
+    private static String ComputerAntwoord;
     private VBox SpelContainer;
     private ImageView[] characterPic;
     private CharacterButton[] characterName;
     private GridPane GridCharacters;
-    private HBox HBoxPrev;
+    private VBox VBoxPrev;
     private StyleLabel LblPrev;
     private Label LblVorigeVraag;
     private StyleLabel LblPrevA;
@@ -38,25 +44,31 @@ public class SpelBordView extends VBox {
     private StyleLabel LblGok;
     private TextField TxtGok;
     private Button BtnGok;
-
+    private StyleLabel LblComputerAntwoordIn;
+    private StyleLabel LblComputerVraagIn;
+    private Label LblComputerAntwoord;
+    private Label LblComputerVraag;
     private VBox[] VboxCharacter;
     private int i;
-
+    private VBox Computerview;
     private ProgrammaModel programmaModel = new ProgrammaModel();
+    private VBox inputs;
+    private HBox logics;
 
     public SpelBordView() {
         this.programmaModel = programmaModel;
         this.initialiseNodes();
         this.layoutNodes();
     }
+
     private void initialiseNodes() {
         SpelContainer = new VBox();
         GridCharacters = new GridPane();
-        HBoxPrev = new HBox();
+        VBoxPrev = new VBox();
         LblPrev = new StyleLabel("Vorige vraag: ");
-        LblVorigeVraag = new StyleLabel("nog geen vraag gesteld");
+        LblVorigeVraag = new Label("nog geen vraag gesteld");
         LblPrevA = new StyleLabel("     Antwoord: ");
-        LblAntwoord = new StyleLabel("nog geen antwoord");
+        LblAntwoord = new Label("nog geen antwoord");
         HboxVraag = new HBox();
         LblVraag = new StyleLabel("Vraag");
         TxtVraag = new TextField();
@@ -65,6 +77,13 @@ public class SpelBordView extends VBox {
         LblGok = new StyleLabel("Gok");
         TxtGok = new TextField();
         BtnGok = new Button("Gok");
+        LblComputerAntwoordIn = new StyleLabel("Computer antwoord:");
+        LblComputerVraagIn = new StyleLabel("Computer vraag:");
+        LblComputerAntwoord = new Label("Computer antwoord");
+        LblComputerVraag = new Label("Computer vraag");
+        Computerview = new VBox();
+        inputs = new VBox();
+        logics = new HBox();
         System.out.println("aantal characters: " + setAantalCharacters);
         System.out.println("deze characters doen mee " + setCharacters);
 
@@ -91,9 +110,59 @@ public class SpelBordView extends VBox {
             i++;
         }
 
+    }
 
+    private void layoutNodes() {
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        double screenWidth = visualBounds.getWidth();
+        double screenHeight = visualBounds.getHeight();
 
-        HBoxPrev.setAlignment(Pos.CENTER);
+        VBoxPrev.getChildren().addAll(LblPrev, LblVorigeVraag, LblPrevA, LblAntwoord);
+        HboxVraag.getChildren().addAll(LblVraag, TxtVraag, BtnVraag);
+        HboxGok.getChildren().addAll(LblGok, TxtGok, BtnGok);
+        inputs.getChildren().addAll(VBoxPrev,HboxVraag, HboxGok);
+        Computerview.getChildren().addAll(LblComputerVraagIn,LblComputerVraag,LblComputerAntwoordIn,LblComputerAntwoord);
+        logics.getChildren().addAll(inputs, Computerview);
+        SpelContainer.getChildren().addAll(GridCharacters, logics);
+        this.getChildren().add(SpelContainer);
+
+        SpelContainer.setPadding(new Insets(10, 10, 10, 10));
+        VBoxPrev.setPadding(new Insets(10, 10, 10, 10));
+        HboxVraag.setPadding(new Insets(10, 10, 10, 10));
+        HboxGok.setPadding(new Insets(10, 10, 10, 10));
+        GridCharacters.setPadding(new Insets(10, 10, 10, 10));
+        TxtVraag.setPadding(new Insets(10, 10, 10, 10));
+        TxtGok.setPadding(new Insets(10, 10, 10, 10));
+        BtnVraag.setPadding(new Insets(10, 10, 10, 10));
+        BtnGok.setPadding(new Insets(10));
+
+        HboxVraag.setSpacing(10);
+        HboxGok.setSpacing(10);
+        VBoxPrev.setSpacing(10);
+        TxtVraag.setMinWidth(100);
+        TxtGok.setMinWidth(100);
+        BtnVraag.setMinWidth(50);
+        BtnGok.setMinWidth(50);
+
+        if (setCharacters != null) {
+            for (int i = 0; i < VboxCharacter.length; i++) {
+                characterPic[i].setFitHeight(0.15 * screenHeight);
+                characterPic[i].setFitWidth((0.15 / 4 * 3 ) * screenHeight);
+                VboxCharacter[i].setMinHeight((0.10 / 3 * 5) * screenHeight);
+                VboxCharacter[i].setMinWidth(0.08 * screenWidth);
+                VboxCharacter[i].setMaxWidth(0.15 * screenWidth);
+                VboxCharacter[i].setMaxHeight((0.15 / 3 * 5) * screenHeight);
+                VboxCharacter[i].setSpacing(10);
+            }
+        }
+
+        GridCharacters.setVgap(25);
+        logics.setSpacing(20);
+        GridCharacters.setMaxWidth(0.5 * screenWidth);
+        GridCharacters.setMaxHeight(0.5 * screenHeight);
+
+        VBoxPrev.setAlignment(Pos.CENTER);
+        logics.setAlignment(Pos.CENTER);
         HboxVraag.setAlignment(Pos.CENTER);
         HboxGok.setAlignment(Pos.CENTER);
         GridCharacters.setAlignment(Pos.CENTER);
@@ -101,85 +170,16 @@ public class SpelBordView extends VBox {
         TxtGok.setAlignment(Pos.CENTER);
         BtnVraag.setAlignment(Pos.CENTER);
         BtnGok.setAlignment(Pos.CENTER);
-    }
-
-    private void layoutNodes() {
-        HBoxPrev.getChildren().addAll(LblPrev, LblVorigeVraag, LblPrevA, LblAntwoord);
-        HboxVraag.getChildren().addAll(LblVraag, TxtVraag, BtnVraag);
-        HboxGok.getChildren().addAll(LblGok, TxtGok, BtnGok);
-        SpelContainer.getChildren().addAll(GridCharacters, HBoxPrev,HboxVraag, HboxGok);
-        this.getChildren().add(SpelContainer);
-
-            SpelContainer.setPadding(new Insets(10, 10, 10, 10));
-            HBoxPrev.setPadding(new Insets(10, 10, 10, 10));
-            HboxVraag.setPadding(new Insets(10, 10, 10, 10));
-            HboxGok.setPadding(new Insets(10, 10, 10, 10));
-            GridCharacters.setPadding(new Insets(10, 10, 10, 10));
-            TxtVraag.setPadding(new Insets(10, 10, 10, 10));
-            TxtGok.setPadding(new Insets(10, 10, 10, 10));
-            BtnVraag.setPadding(new Insets(10, 10, 10, 10));
-            BtnGok.setPadding(new Insets(10));
-
-            HboxVraag.setSpacing(10);
-            HboxGok.setSpacing(10);
-            HBoxPrev.setSpacing(10);
-        GridCharacters.setHgap(20);
-        GridCharacters.setVgap(10);
-
-        for (int i = 0; i < VboxCharacter.length; i++) {
-            characterPic[i].setFitWidth(150);
-            characterPic[i].setFitHeight(200);
-            VboxCharacter[i].setMinWidth(120);
-            VboxCharacter[i].setMinHeight(120);
-            VboxCharacter[i].setSpacing(10);
-        }
-
-
-        HboxVraag.setSpacing(10);
-        HboxGok.setSpacing(10);
-        HBoxPrev.setSpacing(10);
-
-        TxtVraag.setMinWidth(100);
-        TxtGok.setMinWidth(100);
-
-        BtnVraag.setMinWidth(50);
-        BtnGok.setMinWidth(50);
-
-        GridCharacters.setMinWidth(250);
-        GridCharacters.setMinHeight(250);
-
-
-        HboxVraag.setSpacing(10);
-        HboxGok.setSpacing(10);
-        HBoxPrev.setSpacing(10);
-
-
-            TxtVraag.setMinWidth(100);
-            TxtGok.setMinWidth(100);
-
-
-            BtnVraag.setMinWidth(50);
-            BtnGok.setMinWidth(50);
-
-            GridCharacters.setMinWidth(250);
-            GridCharacters.setMinHeight(250);
-
-            GridCharacters.setAlignment(Pos.CENTER);
-            HboxVraag.setAlignment(Pos.CENTER);
-            HboxGok.setAlignment(Pos.CENTER);
-            LblVraag.setAlignment(Pos.CENTER);
-            LblGok.setAlignment(Pos.CENTER);
-            TxtVraag.setAlignment(Pos.CENTER);
-            TxtGok.setAlignment(Pos.CENTER);
-            BtnVraag.setAlignment(Pos.CENTER);
-            BtnGok.setAlignment(Pos.CENTER);
-            SpelContainer.setAlignment(Pos.CENTER);
-            GridCharacters.setAlignment(Pos.CENTER);
-            HBoxPrev.setAlignment(Pos.CENTER);
-            LblPrev.setAlignment(Pos.CENTER);
-            LblVorigeVraag.setAlignment(Pos.CENTER);
-            LblPrevA.setAlignment(Pos.CENTER);
-            LblAntwoord.setAlignment(Pos.CENTER);
+        LblVraag.setAlignment(Pos.CENTER);
+        LblGok.setAlignment(Pos.CENTER);
+        SpelContainer.setAlignment(Pos.CENTER);
+        LblPrev.setAlignment(Pos.CENTER);
+        LblVorigeVraag.setAlignment(Pos.CENTER);
+        LblPrevA.setAlignment(Pos.CENTER);
+        LblAntwoord.setAlignment(Pos.CENTER);
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+        this.setBackground(new Background(achtergrondAfbeelding));
+        this.setAlignment(Pos.CENTER);
         }
 
     public Button getBtnVraag() {
@@ -230,6 +230,28 @@ public class SpelBordView extends VBox {
         }
     };
 
+    public Label getLblComputerAntwoord() {
+        return LblComputerAntwoord;
+    }
 
-}
+    public Label getLblComputerVraag() {
+        return LblComputerVraag;
+    }
+    public String getComputerVraag() {
+        return ComputerVraag;
+    }
+
+    public String getComputerAntwoord() {
+        return ComputerAntwoord;
+    }
+
+    public static void setComputerVraag(String computerVraag) {
+        ComputerVraag = computerVraag;
+    }
+
+    public static void setComputerAntwoord(String computerAntwoord) {
+        ComputerAntwoord = computerAntwoord;
+    }
+
+    }
 

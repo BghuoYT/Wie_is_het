@@ -16,6 +16,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HighScoreModel {
     private final String username;
@@ -146,6 +148,36 @@ public class HighScoreModel {
             e.printStackTrace();
         }
     }
+    public static List<HighScoreModel> getPlayers() {
+        List<HighScoreModel> players = new ArrayList<>();
+
+        try {
+            File inputFile = new File("src/be/kdg/projectbasis/resources/spelergegevens/HighScores.xml");
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(inputFile);
+            NodeList playersList = doc.getElementsByTagName("Player");
+
+            for (int i = 0; i < playersList.getLength(); i++) {
+                Node player = playersList.item(i);
+                if (player.getNodeType() == Node.ELEMENT_NODE) {
+                    Element playerElement = (Element) player;
+                    String username = playerElement.getElementsByTagName("Username").item(0).getTextContent();
+                    String voornaam = playerElement.getElementsByTagName("Voornaam").item(0).getTextContent();
+                    String achternaam = playerElement.getElementsByTagName("Naam").item(0).getTextContent();
+                    String email = playerElement.getElementsByTagName("Email").item(0).getTextContent();
+                    int wins = Integer.parseInt(playerElement.getElementsByTagName("AantalWins").item(0).getTextContent());
+                    HighScoreModel playerData = new HighScoreModel(username, voornaam, achternaam, email, wins);
+                    players.add(playerData);
+                }
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return players;
+    }
+
 
 }
 

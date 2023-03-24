@@ -23,7 +23,7 @@ public class Main extends Application{
         Main.Window= primaryStage;
         ProgrammaModel model = new ProgrammaModel();
         HoofdmenuView view = new HoofdmenuView();
-        HoofdmenuPresenter presenter = new HoofdmenuPresenter(model,view);
+        HoofdmenuPresenter presenter = new HoofdmenuPresenter(model, view);
         Window.setScene(new Scene(view));
         presenter.addWindowEventHandlers();
         Window.show();

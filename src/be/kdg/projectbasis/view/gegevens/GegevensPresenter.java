@@ -51,7 +51,7 @@ public class GegevensPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 HoofdmenuView hoofdmenuView = new HoofdmenuView();
-                HoofdmenuPresenter hoofdmenuPresenter = new HoofdmenuPresenter(model,hoofdmenuView);
+                HoofdmenuPresenter hoofdmenuPresenter = new HoofdmenuPresenter(model, hoofdmenuView);
                 Scene hoofdmenu = new Scene(hoofdmenuView);
                 Main.Window.setScene(hoofdmenu);
                 Main.Window.setTitle("Hoofdmenu");

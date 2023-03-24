@@ -3,7 +3,10 @@ package be.kdg.projectbasis.model;
 import be.kdg.projectbasis.model.character.Character;
 import be.kdg.projectbasis.model.character.CharacterlijstComputer;
 import be.kdg.projectbasis.model.character.CharacterlijstSpeler;
+import be.kdg.projectbasis.model.highscore.HighScoreModel;
 import be.kdg.projectbasis.model.spelbeurten.ComputerQuestions;
+import be.kdg.projectbasis.view.Tussenmenu.TussenmenuView;
+import be.kdg.projectbasis.view.spelBord.SpelBordPresenter;
 import be.kdg.projectbasis.view.spelBord.SpelBordView;
 import be.kdg.projectbasis.view.spelBordSetup.SpelBordSetupView;
 
@@ -18,10 +21,11 @@ public class ProgrammaModel{
     private Random random;
     private String answerS;
     private String answerC;
+    private String computerVraag;
     private Character gekozenCharacter;
     private Character teRadenCharacter;
-    public boolean spelerWin = false;
-    public boolean computerWin = false;
+    private boolean spelerWin = false;
+    private boolean computerWin = false;
 
     public static void setUsername(String username) {
         ProgrammaModel.username = username;
@@ -114,9 +118,16 @@ public class ProgrammaModel{
         if (gok.equalsIgnoreCase(teRadenCharacter.getNaam())) {
             System.out.println("Je hebt het juiste karakter geraden, gefeliciteerd!");
             spelerWin = true;
+            TussenmenuView.spelerWin = "Gefeliciteerd! je hebt gewonnen!";
+            //verhoog aantalwins van user met 1
+            HighScoreModel player = HighScoreModel.readHighScore(username); // haal gegevens op van de speler
+            if (player != null) {
+                player.addWin();
+            }
         } else {
             System.out.println("Dat is helaas niet het juiste karakter. je verliest het spel.");
             computerWin = true;
+            TussenmenuView.spelerWin = "Helaas je bent verloren!";
         }
     }
     public void startSpelbeurtComputer() {
@@ -141,7 +152,6 @@ public class ProgrammaModel{
             System.out.println(answerC);
         }
 
-        // Een lijst met resterende karakters
 
         // Als antwoord nee is
         if (answerC.equals("nee")) {
@@ -153,6 +163,7 @@ public class ProgrammaModel{
                 }
             }
         }
+
         // Als antwoord ja is
         if (answerC.equals("ja")) {
             Iterator<Character> iterator = remainingCharactersC.iterator();
@@ -162,6 +173,9 @@ public class ProgrammaModel{
                     iterator.remove();
                 }
             }
+            computerVraag = question;
+            SpelBordView.setComputerAntwoord(String.valueOf(answerC));
+            SpelBordView.setRemainingCharactersC = remainingCharactersC;
         }
         // Geef de lijst met resterende karakters weer, samen met hun eigenschappen
 
@@ -180,9 +194,37 @@ public class ProgrammaModel{
             }
         }
     }
+    public void reset() {
+        CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
+        remainingCharactersP = new ArrayList<>();
+        for (Character character : characterlijstSpeler.getCharactersSpeler()) {
+            remainingCharactersP.add(character);
+        }
+        random = new Random();
+        teRadenCharacter = remainingCharactersP.get(random.nextInt(remainingCharactersP.size()));
+        spelerWin = false;
 
+        CharacterlijstComputer CharacterlijstComputer = new CharacterlijstComputer();
+        remainingCharactersC = new ArrayList<>();
+        for (Character character : CharacterlijstComputer.getCharactersComputer()) {
+            remainingCharactersC.add(character);
+        }
+        computerWin = false;
+    }
     public String getAnswerS() {
         return answerS;
     }
+    public String getAnswerC() {
+        return answerC;
+    }
+    public String getComputerVraag() {
+        return computerVraag;
+    }
+    public boolean getSpelerWin() {
+        return spelerWin;
+    }
 
+    public boolean getComputerWin() {
+        return computerWin;
+    }
 }

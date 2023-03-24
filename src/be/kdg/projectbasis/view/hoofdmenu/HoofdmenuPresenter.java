@@ -2,6 +2,7 @@ package be.kdg.projectbasis.view.hoofdmenu;
 
 import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
+import be.kdg.projectbasis.model.highscore.HighScoreModel;
 import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
 import be.kdg.projectbasis.view.gegevens.GegevensView;
 import be.kdg.projectbasis.view.highscore.HighscorePresenter;
@@ -26,7 +27,7 @@ public class HoofdmenuPresenter {
 
     private final HoofdmenuView view;
 
-    public HoofdmenuPresenter(ProgrammaModel model,HoofdmenuView view) {
+    public HoofdmenuPresenter(ProgrammaModel model, HoofdmenuView view) {
         this.model = model;
         this.view = view;
         this.addEventHandelers();
@@ -48,9 +49,9 @@ public class HoofdmenuPresenter {
             public void handle(ActionEvent event) {
                 HighscoreView highscoreView = new HighscoreView();
                 HighscorePresenter highscorePresenter = new HighscorePresenter(model, highscoreView);
-                Scene highscoren = new Scene(highscoreView);
-                Main.Window.setScene(highscoren);
-                Main.Window.setTitle("Highscoren");
+                Scene highscores = new Scene(highscoreView);
+                Main.Window.setScene(highscores);
+                Main.Window.setTitle("Highscores");
                 Main.Window.show();
                 Main.Window.setFullScreen(true);
             }
@@ -79,7 +80,7 @@ public class HoofdmenuPresenter {
                 NieuwCharacterPresenter nieuwCharacterPresenter = new NieuwCharacterPresenter(model, nieuwCharacterView);
                 Scene nieuwcharacter = new Scene(nieuwCharacterView);
                 Main.Window.setScene(nieuwcharacter);
-                Main.Window.setTitle("Nieuw Characters");
+                Main.Window.setTitle("Characters toevoegen");
                 Main.Window.show();
                 Main.Window.setFullScreen(true);
             }
