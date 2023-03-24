@@ -93,7 +93,7 @@ public class SpelBordView extends VBox {
         VboxCharacter = new VBox[setCharacters.size()];
         for (Character character : setCharacters) {
             characterName[i] = new CharacterButton(character.getNaam());
-            characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/"+ character.getNaam() +".png");
+            characterPic[i] = new ImageView(character.getAfbeelding());
             VboxCharacter[i] = new VBox();
 
             // Informatie als je over het foto hovert

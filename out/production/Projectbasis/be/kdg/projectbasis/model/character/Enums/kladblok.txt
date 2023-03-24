@@ -1,0 +1,8 @@
+Geslacht = vrouw, man;
+Oogkleur = bruin, blauw, groen, grijs;
+HaarKleur = blond, bruin, zwart, rood, kaal;
+Haarlengte = kaal, kort, schouderlengte , lang;
+HaarStijl = krullen, golvend ,stijl, kaal;
+Gezichtsbeharing = baard, snor, geen;
+Hoofddeksel = hoed, pet, muts, geen;
+Accessoires = bril, halsketting, oorbellen, geen;
