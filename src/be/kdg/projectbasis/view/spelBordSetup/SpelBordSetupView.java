@@ -54,17 +54,14 @@ public class SpelBordSetupView extends VBox {
             VboxCharacter = new VBox[setCharacters.size()];
             for (Character character : setCharacters) {
                 characterName[i] = new CharacterButton(character.getNaam());
-                characterPic[i] = new ImageView("be/kdg/projectbasis/resources/characters/afbeeldingen/" + character.getNaam() + ".png");
+                characterPic[i] = new ImageView(character.getAfbeelding());
                 VboxCharacter[i] = new VBox();
 
                 // Informatie als je over het foto hovert
                 Tooltip tooltip = new Tooltip(character.getNaam().toUpperCase() + "\ngeslacht: " + character.getGeslacht() + "\noogkleur: " + character.getOogkleur() + "\nhaarkleur: " + character.getHaarKleur() + "\nhaarlengte: "
-                        + character.getHaarlengte() + "\nhaarstijl: " + character.getHaarStijl() + "\ngezichtsbeharing: " + character.getGezichtsbeharing() + "\nhoofddeksel: " + character.getHoofddeksel() + "\naccessoires: " + character.getAccessoires() + "\nKlik op de naam om te verwijderen");
+                        + character.getHaarlengte() + "\nhaarstijl: " + character.getHaarStijl() + "\ngezichtsbeharing: " + character.getGezichtsbeharing() + "\nhoofddeksel: " + character.getHoofddeksel() + "\naccessoires: " + character.getAccessoires());
                 Tooltip.install(characterPic[i], tooltip);
-
-                //info als je over naam hovert
-                Tooltip tooltip2 = new Tooltip("klik hier om " + character.getNaam().toUpperCase() + " uit het spelbord te verwijderen \nHover over de afbeelding voor info over het personage");
-                Tooltip.install(characterName[i], tooltip2);
+                
                 VboxCharacter[i].getChildren().addAll(characterPic[i], characterName[i]);
                 GridCharacters.add(VboxCharacter[i], i % 7, i % 3);
 
