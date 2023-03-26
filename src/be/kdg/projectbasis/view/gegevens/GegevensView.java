@@ -2,12 +2,14 @@ package be.kdg.projectbasis.view.gegevens;
 
 import be.kdg.projectbasis.view.standaardElementen.StyleLabel;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class GegevensView extends VBox {
 
@@ -70,10 +72,13 @@ public class GegevensView extends VBox {
         GridPane.setHalignment(lblUsername, HPos.RIGHT);
         gridpanestyle.setHgap(20);
         this.getChildren().add(gridpanestyle);
+        this.btnValidate.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
+        this.btnBack.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
 
 
 
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }

@@ -23,6 +23,19 @@ public class HighscorePresenter {
 
 
     private void addEventHandlers() {
+        view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                HoofdmenuView hoofdmenuView = new HoofdmenuView();
+                HoofdmenuPresenter hoofdmenuPresenter = new HoofdmenuPresenter(model, hoofdmenuView);
+                Scene hoofdmenu = new Scene(hoofdmenuView);
+                Main.Window.setScene(hoofdmenu);
+                Main.Window.setTitle("Hoofdmenu");
+                Main.Window.show();
+                Main.Window.setFullScreen(true);
+            }
+        });
+
 
     }
 

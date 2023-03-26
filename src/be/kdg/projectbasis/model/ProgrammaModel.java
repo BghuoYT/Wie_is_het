@@ -26,6 +26,7 @@ public class ProgrammaModel{
     private Character teRadenCharacter;
     private boolean spelerWin = false;
     private boolean computerWin = false;
+    private String gekozenCharacterNaamTest;;
 
     public static void setUsername(String username) {
         ProgrammaModel.username = username;
@@ -56,16 +57,17 @@ public class ProgrammaModel{
 
     }
     public void setupComputer(String gekozenCharacterNaam) {
-        //haal gekozen character uit lijst van characters
+        String gekozenCharacterNaamS;
         for (Character character : remainingCharactersC) {
             if (character.getNaam().equalsIgnoreCase(gekozenCharacterNaam)) {
                 gekozenCharacter = character;
+                gekozenCharacterNaamTest = character.getNaam();
                 break;
             }
         }
 
         System.out.println("Het te raden karakter is gekozen.");
-        System.out.println("je hebt gekozen voor: " + gekozenCharacter);
+        System.out.println("je hebt gekozen voor: " + gekozenCharacterNaamTest);
     }
     public void setupSpeler() {
         CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
@@ -140,11 +142,11 @@ public class ProgrammaModel{
             System.out.print(" - " + character.getNaam());
         }
 
-        String question = computerQuestions.getRandomQuestion();
-        System.out.println(question);
+        computerVraag = computerQuestions.getRandomQuestion();
+        System.out.println(computerVraag);
 
         // Gebruik de vraag van de computer om te bepalen of het karakter aan de eigenschap voldoet
-        if (gekozenCharacter.matches(question)) {
+        if (gekozenCharacter.matches(computerVraag)) {
             answerC = "ja";
             System.out.println(answerC);
         } else {
@@ -158,7 +160,7 @@ public class ProgrammaModel{
             Iterator<Character> iterator = remainingCharactersC.iterator();
             while (iterator.hasNext()) {
                 Character character = iterator.next();
-                if (character.matches(question)) {
+                if (character.matches(computerVraag)) {
                     iterator.remove();
                 }
             }
@@ -169,11 +171,11 @@ public class ProgrammaModel{
             Iterator<Character> iterator = remainingCharactersC.iterator();
             while (iterator.hasNext()) {
                 Character character = iterator.next();
-                if (!character.matches(question)) {
+                if (!character.matches(computerVraag)) {
                     iterator.remove();
                 }
             }
-            computerVraag = question;
+
             SpelBordView.setComputerAntwoord(String.valueOf(answerC));
             SpelBordView.setRemainingCharactersC = remainingCharactersC;
         }
@@ -188,9 +190,11 @@ public class ProgrammaModel{
             if (guess.equalsIgnoreCase(gekozenCharacter.getNaam())) {
                 System.out.println("Je hebt het juiste karakter geraden! Het was " + gekozenCharacter.getNaam());
                 computerWin = true;
+                TussenmenuView.spelerWin = "Helaas je bent verloren!";
             } else {
                 System.out.println("Dat is helaas niet het juiste karakter. De speler wint");
                 spelerWin = true;
+                TussenmenuView.spelerWin = "Gefeliciteerd je bent gewonnen!";
             }
         }
     }

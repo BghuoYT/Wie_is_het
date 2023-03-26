@@ -13,6 +13,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
@@ -120,14 +121,18 @@ public class SpelBordView extends VBox {
         VBoxPrev.getChildren().addAll(LblPrev, LblVorigeVraag, LblPrevA, LblAntwoord);
         HboxVraag.getChildren().addAll(LblVraag, TxtVraag, BtnVraag);
         HboxGok.getChildren().addAll(LblGok, TxtGok, BtnGok);
-        inputs.getChildren().addAll(VBoxPrev,HboxVraag, HboxGok);
+        inputs.getChildren().addAll(HboxVraag, HboxGok);
         Computerview.getChildren().addAll(LblComputerVraagIn,LblComputerVraag,LblComputerAntwoordIn,LblComputerAntwoord);
-        logics.getChildren().addAll(inputs, Computerview);
-        SpelContainer.getChildren().addAll(GridCharacters, logics);
+        logics.getChildren().addAll(VBoxPrev, Computerview);
+        SpelContainer.getChildren().addAll(GridCharacters, logics, inputs);
         this.getChildren().add(SpelContainer);
+
+        this.BtnVraag.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
+        this.BtnGok.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
 
         SpelContainer.setPadding(new Insets(10, 10, 10, 10));
         VBoxPrev.setPadding(new Insets(10, 10, 10, 10));
+        Computerview.setPadding(new Insets(10, 10, 10, 10));
         HboxVraag.setPadding(new Insets(10, 10, 10, 10));
         HboxGok.setPadding(new Insets(10, 10, 10, 10));
         GridCharacters.setPadding(new Insets(10, 10, 10, 10));
@@ -137,6 +142,7 @@ public class SpelBordView extends VBox {
         BtnGok.setPadding(new Insets(10));
 
         HboxVraag.setSpacing(10);
+        Computerview.setSpacing(10);
         HboxGok.setSpacing(10);
         VBoxPrev.setSpacing(10);
         TxtVraag.setMinWidth(100);

@@ -55,7 +55,7 @@ public class TussenmenuPresenter {
             public void handle(ActionEvent actionEvent) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Afsluiten");
-                alert.setHeaderText("Wil u de spel afsluiten ?");
+                alert.setHeaderText("Wil u het spel afsluiten ?");
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent()&& result.get() == ButtonType.OK){
                     System.exit(0);

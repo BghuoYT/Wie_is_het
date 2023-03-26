@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
@@ -13,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import be.kdg.projectbasis.model.highscore.HighScoreModel;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
 import java.util.Comparator;
@@ -29,6 +31,8 @@ public class HighscoreView extends VBox {
     private TableColumn<HighScoreModel, Integer> aantalWinsCol;
     private ObservableList<HighScoreModel> highscoreList;
 
+    private Button btnBack;
+
 
     public HighscoreView(){
         this.initialiseNodes();
@@ -36,6 +40,7 @@ public class HighscoreView extends VBox {
     }
 
     private void initialiseNodes() {
+        btnBack = new Button("Back");
         pageContainer = new VBox();
         pageLabel = new StyleLabel("Highscores");
         highscoreTable = new TableView<>();
@@ -74,15 +79,16 @@ public class HighscoreView extends VBox {
         VBox.setVgrow(pageContainer, Priority.ALWAYS);
         pageContainer.setFillWidth(true);
         pageContainer.setAlignment(CENTER);
+        this.getChildren().add(btnBack);
+        this.btnBack.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
 
 
-
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }
 
-
-
-
+    public Button getBtnBack() {
+        return btnBack;
+    }
 }

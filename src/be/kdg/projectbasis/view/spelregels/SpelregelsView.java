@@ -17,13 +17,19 @@ public class SpelregelsView extends HBox {
     }
 
     private void initialiseNodes() {
-        lblRegels = new Label("Spelregels WIE IS HET" + "\n" +
-                "Het spel ‘Wie is het?’ zal in de meeste gevallen met twee spelers worden gespeeld," + "\n" +
-                "maar het is ook ontzettend gezellig om met meerdere spelers te spelen. De twee spelers krijgen beide een spelbord met daarop 24 gezichten." + "\n" +
-                "Natuurlijk heeft elk gezicht ook een naam. Beide spelers moeten hun spelbord opvullen met 24 gezichten.\n" +
-                "\n" + "Daarna is het de beurt aan de eerste speler om een vraag te stellen over het desbetreffende kaartje. Iedere vraag moet beantwoord worden met ja of nee, dus er kunnen geen open vragen worden gesteld." + "\n" +
-                "Een vraag die bijvoorbeeld kan is: is het een vrouw? Stel dat klopt, dan kan jij alle gezichten van de mannen dichtklappen en dan ben je weer een stap dichterbij de winst. Daarna mag de andere speler een vraag stellen.");
-
+        lblRegels = new Label("Spelregels WIE IS HET\n\n" +
+                "Het spel wordt meestal met twee spelers gespeeld, maar kan ook met meerdere spelers worden gespeeld.\n\n" +
+                "Elk van de twee spelers heeft een spelbord met 20 gezichten en namen.\n\n" +
+                "Beide spelers moeten hun spelbord opvullen met 20 gezichten.\n\n" +
+                "De eerste speler stelt een vraag over een kaartje op het spelbord van de tegenstander.\n\n" +
+                "De vraag moet beantwoord worden met ja of nee.\n\n" +
+                "Op basis van het antwoord kan de eerste speler sommige gezichten afsluiten.\n\n" +
+                "Dit doet hij door op de naam van de speler te drukken.\n\n" +
+                "Dan mag de tweede speler een vraag stellen.\n\n" +
+                "Het spel gaat door totdat één van de spelers kan raden wie het gezicht van de tegenstander is.\n\n" +
+                "Bij een foute gok verlies je automatisch het spel.\n\n"
+                );
+        lblRegels.setWrapText(true);
     }
 
     private void layoutNodes() {

@@ -37,6 +37,15 @@ public class SpelBordSetupPresenter {
             model.refreshCharacters();
             openSpelbord();
         });
+        view.getRandomButton().setOnAction(event -> {
+            // haal random naam uit view.setCharacters array
+            int randomIndex = (int) (Math.random() * SpelBordSetupView.setCharacters.size());
+            String gekozenCharacter = SpelBordSetupView.setCharacters.get(randomIndex).getNaam();
+            model.setupComputer(gekozenCharacter);
+            model.setupSpeler();
+            model.refreshCharacters();
+            openSpelbord();
+        });
     }
 
     private void openSpelbord() {

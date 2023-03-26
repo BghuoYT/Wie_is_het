@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
@@ -29,23 +30,23 @@ public class SpelBordSetupView extends VBox {
     private Label LblKeuze;
     private TextField TxtKeuze;
     private Button BtnSubmit;
-
     public static ArrayList<Character> setCharacters;
     private VBox[] VboxCharacter;
     private int i = 0;
+    private Button randomButton;
 
     // constructor
     public SpelBordSetupView() {
         this.initialiseNodes();
         this.layoutNodes();
     }
-
     private void initialiseNodes() {
         SpelContainer = new VBox();
         GridCharacters = new GridPane();
         HboxVraag = new HBox();
         LblKeuze = new StyleLabel("kies een character dat de computer moet raden");
         TxtKeuze = new TextField();
+        randomButton = new Button("Random");
         BtnSubmit = new Button("OK");
 
         if (setCharacters != null) {
@@ -88,6 +89,9 @@ public class SpelBordSetupView extends VBox {
                 VboxCharacter[i].setSpacing(10);
             }
         }
+
+        BtnSubmit.setMinWidth(30);
+        randomButton.setMinWidth(80);
         GridCharacters.setVgap(25);
         GridCharacters.setMaxWidth(0.5 * screenWidth);
         GridCharacters.setMaxHeight(0.5 * screenHeight);
@@ -96,17 +100,21 @@ public class SpelBordSetupView extends VBox {
         HboxVraag.setAlignment(Pos.CENTER);
         HboxVraag.setPadding(new Insets(0.02 * screenHeight));
         HboxVraag.setSpacing(0.01 * screenWidth);
-        HboxVraag.getChildren().addAll(LblKeuze, TxtKeuze, BtnSubmit);
+        HboxVraag.getChildren().addAll(LblKeuze, TxtKeuze, BtnSubmit, randomButton);
 
         SpelContainer.setAlignment(Pos.CENTER);
         SpelContainer.setPadding(new Insets(0.05 * screenHeight, 0.02 * screenWidth, 0.05 * screenHeight, 0.02 * screenWidth));
         SpelContainer.setSpacing(0.05 * screenHeight);
         SpelContainer.getChildren().addAll(GridCharacters, HboxVraag);
 
+        this.BtnSubmit.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
+        this.randomButton.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
+
+
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(SpelContainer);
 
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(screenWidth, screenHeight, true, true, true, true)); // gebruik de breedte en hoogte van het scherm
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }
@@ -118,6 +126,9 @@ public class SpelBordSetupView extends VBox {
 
     public Button getBtnSubmit() {
         return BtnSubmit;
+    }
+    public Button getRandomButton() {
+        return randomButton;
     }
 }
 
